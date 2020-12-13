@@ -1,23 +1,20 @@
 function numRegions(graph) {
-    //initialize set + connected regions count
-    let visited = new Set();
+    const visited = new Set();
     let regions = 0;
 
-    //
     for (let node in graph) {
-        if (isNewRegion(node, graph, visited)) regions++;
+        if (depthFirst(node, graph, visited)) regions++;
     }
 
     return regions;
 }
 
-function isNewRegion(node, graph, visited) {
+function depthFirst(node, graph, visited) {
     if (visited.has(node)) return false;
 
     visited.add(node);
-
     graph[node].forEach((neighbor) => {
-        isNewRegion(neighbor, graph, visited);
+        depthFirst(neighbor, graph, visited);
     });
 
     return true;
