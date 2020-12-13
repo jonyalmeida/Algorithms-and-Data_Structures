@@ -4,7 +4,11 @@ const { expect, spy } = chai;
 
 const { GraphNode } = require("../lib/graph-node");
 const { breadthFirstSearch } = require("../lib/breadth-first-search");
-const { maxValueBST } = require("../lib/max-value");
+const {
+    maxValueBST,
+    maxValueDST,
+    maxValueRecursive,
+} = require("../lib/max-value");
 const { numRegions } = require("../lib/num-regions");
 
 describe("GraphNode Algorithms", () => {
@@ -71,6 +75,39 @@ describe("GraphNode Algorithms", () => {
         });
     });
 
+    describe("maxValueDST(startingNode)", () => {
+        // it should accept a starting GraphNode as an arg
+
+        it("should return the largest value within the full graph", () => {
+            let five = new GraphNode(5);
+            let three = new GraphNode(3);
+            let two = new GraphNode(2);
+            let four = new GraphNode(4);
+            let ten = new GraphNode(10);
+            let seven = new GraphNode(7);
+            let six = new GraphNode(6);
+            five.neighbors = [three, two, four];
+            two.neighbors = [seven, ten];
+            four.neighbors = [six];
+            expect(maxValueDST(five)).to.equal(10);
+
+            let eight = new GraphNode(8);
+            expect(maxValueDST(eight)).to.equal(8);
+        });
+
+        context("when the graph has a cycle", () => {
+            it("should not get trapped in an infinite loop", () => {
+                let seven = new GraphNode(7);
+                let eight = new GraphNode(8);
+                let nine = new GraphNode(9);
+                seven.neighbors = [eight];
+                eight.neighbors = [nine];
+                nine.neighbors = [seven];
+                expect(maxValueDST(seven)).to.equal(9);
+            });
+        });
+    });
+
     describe("maxValueBST(startingNode)", () => {
         // it should accept a starting GraphNode as an arg
 
@@ -100,6 +137,39 @@ describe("GraphNode Algorithms", () => {
                 eight.neighbors = [nine];
                 nine.neighbors = [seven];
                 expect(maxValueBST(seven)).to.equal(9);
+            });
+        });
+    });
+
+    describe("maxValueRecursive(startingNode)", () => {
+        // it should accept a starting GraphNode as an arg
+
+        it("should return the largest value within the full graph", () => {
+            let five = new GraphNode(5);
+            let three = new GraphNode(3);
+            let two = new GraphNode(2);
+            let four = new GraphNode(4);
+            let ten = new GraphNode(10);
+            let seven = new GraphNode(7);
+            let six = new GraphNode(6);
+            five.neighbors = [three, two, four];
+            two.neighbors = [seven, ten];
+            four.neighbors = [six];
+            expect(maxValueRecursive(five)).to.equal(10);
+
+            let eight = new GraphNode(8);
+            expect(maxValueRecursive(eight)).to.equal(8);
+        });
+
+        context("when the graph has a cycle", () => {
+            it("should not get trapped in an infinite loop", () => {
+                let seven = new GraphNode(7);
+                let eight = new GraphNode(8);
+                let nine = new GraphNode(9);
+                seven.neighbors = [eight];
+                eight.neighbors = [nine];
+                nine.neighbors = [seven];
+                expect(maxValueRecursive(seven)).to.equal(9);
             });
         });
     });

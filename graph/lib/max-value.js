@@ -35,17 +35,24 @@ function maxValueBST(startingNode) {
 
 //depth first graph traversal
 function maxValueDST(startingNode) {
+    //initialize LIFO stack
     const stack = [startingNode];
+
     const visited = new Set();
+    visited.add(startingNode);
 
     let maxVal = new GraphNode(-Infinity);
 
     while (stack.length > 0) {
+        //current node gets top of stack
         let currNode = stack.pop();
 
         if (currNode.value > maxVal.value) {
             maxVal = currNode;
         }
+
+        //for each neighbor that hasn't been visited, gets added to visited
+        //and pushed to the stack
         currNode.neighbors.forEach((node) => {
             if (!visited.has(node)) {
                 visited.add(node);
@@ -57,27 +64,20 @@ function maxValueDST(startingNode) {
     return maxVal.value;
 }
 
-//depth first traversal recursive
-// function maxValue(
-//     startingNode,
-//     visited = new Set(),
-//     maxVal = new GraphNode(-Infinity)
-// ) {
-//     if (visited.has(startingNode)) return;
-//     visited.add(startingNode);
+// depth first traversal recursive
+function maxValueRecursive(startingNode, visited = new Set()) {
+    if (visited.has(startingNode)) return -Infinity;
 
-//     startingNode.neighbors.forEach((node) => {
-//         visited.add(node);
-//         if (node.value > maxVal.value) {
-//             maxVal = node;
-//         }
-//         return maxValue(node, visited, maxVal);
-//     });
+    visited.add(startingNode);
 
-//     return maxVal.value;
-// }
+    let neighborMaxes = startingNode.neighbors.map((neighbor) =>
+        maxValueRecursive(neighbor, visited)
+    );
+    return Math.max(startingNode.value, ...neighborMaxes);
+}
 
 module.exports = {
     maxValueBST,
     maxValueDST,
+    maxValueRecursive,
 };
