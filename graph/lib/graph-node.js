@@ -1,3 +1,4 @@
+//declare node class
 class GraphNode {
     constructor(value) {
         this.value = value;

@@ -4,7 +4,7 @@ const { expect, spy } = chai;
 
 const { GraphNode } = require("../lib/graph-node");
 const { breadthFirstSearch } = require("../lib/breadth-first-search");
-const { maxValue } = require("../lib/max-value");
+const { maxValueBST } = require("../lib/max-value");
 const { numRegions } = require("../lib/num-regions");
 
 describe("GraphNode Algorithms", () => {
@@ -71,7 +71,7 @@ describe("GraphNode Algorithms", () => {
         });
     });
 
-    describe("maxValue(startingNode)", () => {
+    describe("maxValueBST(startingNode)", () => {
         // it should accept a starting GraphNode as an arg
 
         it("should return the largest value within the full graph", () => {
@@ -85,10 +85,10 @@ describe("GraphNode Algorithms", () => {
             five.neighbors = [three, two, four];
             two.neighbors = [seven, ten];
             four.neighbors = [six];
-            expect(maxValue(five)).to.equal(10);
+            expect(maxValueBST(five)).to.equal(10);
 
             let eight = new GraphNode(8);
-            expect(maxValue(eight)).to.equal(8);
+            expect(maxValueBST(eight)).to.equal(8);
         });
 
         context("when the graph has a cycle", () => {
@@ -99,7 +99,7 @@ describe("GraphNode Algorithms", () => {
                 seven.neighbors = [eight];
                 eight.neighbors = [nine];
                 nine.neighbors = [seven];
-                expect(maxValue(seven)).to.equal(9);
+                expect(maxValueBST(seven)).to.equal(9);
             });
         });
     });
