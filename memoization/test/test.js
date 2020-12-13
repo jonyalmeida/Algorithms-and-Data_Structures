@@ -7,11 +7,11 @@ const { lucasNumberMemo, minChange } = require("../lib/problems");
 describe("lucasNumberMemo(n)", () => {
     describe("catch StackOverFlow", () => {
         beforeEach(() => {
-            util.catchStackOverFlow(lucasNumberMemo, 10);
+            util.catchStackOverflow(lucasNumberMemo, 10);
         });
 
         it("should calculate the n-th number of the lucas sequence", () => {
-            expect(lucalNumberMemo(0)).to.equal(2);
+            expect(lucasNumberMemo(0)).to.equal(2);
             expect(lucasNumberMemo(1).to.equal(1));
             expect(lucasNumberMemo(5)).to.equal(11);
             expect(lucasNumberMemo(9)).to.equal(76);
@@ -34,7 +34,7 @@ describe("lucasNumberMemo(n)", () => {
 
 describe("minChange(coins, amount)", () => {
     beforeEach(() => {
-        util.catchStackOverFlow(minChange, [1, 2, 5], 11);
+        util.catchStackOverflow(minChange, [1, 2, 5], 11);
     });
 
     it("it should return the minimum number of coins needed to make the amount", () => {
