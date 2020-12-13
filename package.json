@@ -1,0 +1,26 @@
+{
+  "name": "Algorithms-and-Data_Structures",
+  "version": "1.0.0",
+  "description": "Test Driven Development- Node.js, Mocha, Chai, BST, Heap, Memoization, Graph, Singly + Doubly Linked List, Sorting Algorithms",
+  "main": "index.js",
+  "dependencies": {
+    "chai": "^4.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.2.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonyalmeida/Algorithms-and-Data_Structures.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonyalmeida/Algorithms-and-Data_Structures/issues"
+  },
+  "homepage": "https://github.com/jonyalmeida/Algorithms-and-Data_Structures#readme"
+}
