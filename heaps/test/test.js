@@ -2,8 +2,7 @@ const chai = require("chai");
 chai.use(require("chai-spies"));
 const { expect, spy } = chai;
 
-const { MaxHeap } = require("../lib/max-heap");
-const { isMaxHeap } = require("../lib/is-heap");
+const { MaxHeap, isMaxHeap } = require("../lib/max-heap");
 
 describe("MaxHeap", () => {
     describe("constructor()", () => {
