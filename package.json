@@ -4,7 +4,8 @@
   "description": "Test Driven Development- Node.js, Mocha, Chai, BST, Heap, Memoization, Graph, Singly + Doubly Linked List, Sorting Algorithms",
   "main": "index.js",
   "dependencies": {
-    "chai": "^4.2.0"
+    "chai": "^4.2.0",
+    "chai-spies": "^1.0.0"
   },
   "devDependencies": {
     "mocha": "^8.2.1"
